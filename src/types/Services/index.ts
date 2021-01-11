@@ -2,7 +2,7 @@ import { UsersServiceInterface } from './UsersService';
 import { PostsServiceInterface } from './PostsService';
 import { ImagesServiceInterface } from './ImagesService';
 import { CommentsServiceInterface } from './CommentsService';
-import { Post, AuthTokenSet, User, Image, Comment } from '../Data';
+import { Post, User, Image, Comment, RefreshToken } from '../Data';
 import {
   FindOneOptions,
   UpdateOneOptions,
@@ -41,7 +41,7 @@ export default interface WebServiceInterface {
     accessToken: any,
     idToken: any,
     oauthServer: string
-  ): Promise<AuthTokenSet & { user: Partial<User> }>;
+  ): Promise<{ refreshToken: RefreshToken } & { user: Partial<User> }>;
 
   getUserFromAccessToken(accessToken: string): Promise<User>;
   /* users services end */
