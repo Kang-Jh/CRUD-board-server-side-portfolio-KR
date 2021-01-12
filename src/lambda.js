@@ -11,11 +11,21 @@ const { default: startServer } = require('./app');
 // binaryMimeTypes below, then redeploy (`npm run package-deploy`)
 const binaryMimeTypes = ['*/*'];
 
-exports.handler = async function (event, context, callback) {
-  const app = await startServer();
+function createLambdaHandler() {
+  let app;
 
-  return serverlessExpress({
-    app,
-    binaryMimeTypes,
-  }).handler(event, context, callback);
-};
+  return async function (event, context, callback) {
+    context.callbackWaitsForEmptyEventLoop = false;
+
+    if (!app) {
+      app = await startServer();
+    }
+
+    return serverlessExpress({
+      app,
+      binaryMimeTypes,
+    }).handler(event, context, callback);
+  };
+}
+
+exports.handler = createLambdaHandler();
