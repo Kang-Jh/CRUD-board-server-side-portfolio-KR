@@ -44,10 +44,11 @@ S3에 업로드 후 유저에게 S3 이미지 링크를 보내는게 아니라 C
 
 AWS Lambda에 배포할 때 외부 패키지들을(node_modules) 사용할 시 node_modules 폴더를 같이 포함시켜줘야 하므로 npm package-deploy 초기 설정할 때만 쓸모가 있습니다.
 
+람다의 시간 제한은 30초, 메모리 제한은 192MB로 설정해주세요. 메모리 사용량은 156MB인데 람다는 64MB를 단위로 쓰기 때문입니다.
+
 이후에는 node_modules와 package.json, .env 파일을 복사해서 배포되는 폴더에 같이 넣고 zip 확장자로 압축하여 업로드해줘야 합니다.
 
-또한 최적화 전에는 시간 제한을 1분, 메모리를 256MB로 만들어놓아야 간신히 돌아갑니다.
-(최적화는 [여기를](https://docs.atlas.mongodb.com/best-practices-connecting-to-aws-lambda) 참조해주세요.)
+몽고디비와 람다의 최적화는 [여기를](https://docs.atlas.mongodb.com/best-practices-connecting-to-aws-lambda) 참조해주세요.
 
 또한 람다에 S3에 접근할 수 있는 권한을 IAM을 통해 부여해야 합니다.
 
