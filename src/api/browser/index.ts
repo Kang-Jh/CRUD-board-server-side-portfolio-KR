@@ -6,7 +6,7 @@ import {
   asyncMiddlewareWrapper as aMW,
   authorizationHeaderValidationMiddleware,
   postsGetQueryValidation,
-  postsRoutePutValidationMiddlewares,
+  postsRoutePatchValidationMiddlewares,
   postsRoutePostValidationMiddlewares,
   imagePostValidationMiddleware,
   commentsGetValidationMiddleware,
@@ -249,13 +249,13 @@ function createBrowserRouter(mongoClient: MongoClient) {
     })
   );
 
-  // PUT /posts/:id
-  browserRouter.put(
+  // PATCH /posts/:id
+  browserRouter.patch(
     '/posts/:id',
     upload.single('thumbnail'),
     csrfMiddleware,
     authorizationHeaderValidationMiddleware,
-    postsRoutePutValidationMiddlewares,
+    postsRoutePatchValidationMiddlewares,
     aMW(async (req, res) => {
       const postId = req.params.id;
       const accessToken = getAccessToken(req.headers.authorization);

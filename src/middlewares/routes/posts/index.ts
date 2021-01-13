@@ -3,7 +3,7 @@ import { thumbnailFileValidationMiddleware } from './thumbnailFileValidation';
 import { inputValidationMiddleware } from './inputValidation';
 import { postsGetQueryValidation } from './postsGetQueryValidation';
 
-export const postsRoutePutValidationMiddlewares = [
+export const postsRoutePatchValidationMiddlewares = [
   thumbnailFileValidationMiddleware,
   postIdParamValidationMiddleware,
   inputValidationMiddleware,

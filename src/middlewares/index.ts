@@ -1,7 +1,7 @@
 import { asyncMiddlewareWrapper } from './asyncMiddlewareWrapper';
 import { authorizationHeaderValidationMiddleware } from './authorizationHeaderValidation';
 import {
-  postsRoutePutValidationMiddlewares,
+  postsRoutePatchValidationMiddlewares,
   postsRoutePostValidationMiddlewares,
   postsGetQueryValidation,
 } from './routes/posts';
@@ -15,7 +15,7 @@ import {
 export {
   asyncMiddlewareWrapper,
   authorizationHeaderValidationMiddleware,
-  postsRoutePutValidationMiddlewares,
+  postsRoutePatchValidationMiddlewares,
   postsRoutePostValidationMiddlewares,
   imagePostValidationMiddleware,
   commentsGetValidationMiddleware,
