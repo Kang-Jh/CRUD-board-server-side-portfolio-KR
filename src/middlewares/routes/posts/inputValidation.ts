@@ -23,7 +23,7 @@ export const inputValidationMiddleware = (
       Array.isArray(images)
     )
   ) {
-    throw createError(400);
+    throw createError(403);
   }
 
   // check array images contain only strings
@@ -34,7 +34,7 @@ export const inputValidationMiddleware = (
       typeof image !== 'object' ||
       !image.src.startsWith('https')
     ) {
-      throw createError(400);
+      throw createError(403);
     }
   }
 
@@ -44,7 +44,7 @@ export const inputValidationMiddleware = (
     validator.isEmpty(validator.trim(contents)) ||
     contents.replace(/<p><br><\/p>/g, '').length === 0
   ) {
-    throw createError(400);
+    throw createError(403);
   }
 
   // sanitize title and contents

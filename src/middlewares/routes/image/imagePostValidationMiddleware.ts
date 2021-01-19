@@ -16,7 +16,7 @@ export const imagePostValidationMiddleware = (
     !req.file.mimetype.startsWith('image') ||
     req.file.size > 3 * MEGA_BYTE
   ) {
-    throw createError(400);
+    throw createError(403);
   }
 
   next();

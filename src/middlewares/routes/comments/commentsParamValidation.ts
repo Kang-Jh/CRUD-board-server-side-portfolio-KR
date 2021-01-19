@@ -10,11 +10,11 @@ export const commentsParamValidationMiddleware = (
   const { id } = req.params;
 
   if (!id) {
-    throw createError(400);
+    throw createError(403);
   }
 
   if (id && !validator.isMongoId(id + '')) {
-    throw createError(400);
+    throw createError(403);
   }
 
   next();
