@@ -9,7 +9,7 @@ export function postIdParamValidationMiddleware(
 ) {
   const postId = req.params.id;
   if (!validator.isMongoId(postId + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   next();

@@ -21,19 +21,19 @@ export const commentsPostValidationMiddleware = (
     typeof contents !== 'string' ||
     validator.isEmpty(validator.trim(contents))
   ) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (!validator.isMongoId(post._id + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (superComment && !validator.isMongoId(superComment._id + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (mention && !validator.isMongoId(mention._id + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   // re-assigning prevents hidden property abussing

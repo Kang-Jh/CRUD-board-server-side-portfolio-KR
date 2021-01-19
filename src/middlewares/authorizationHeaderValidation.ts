@@ -12,7 +12,7 @@ export function authorizationHeaderValidationMiddleware(
 
   const authorizationHeader = req.headers.authorization.split(' ');
   if (authorizationHeader[0].toLowerCase() !== 'bearer') {
-    throw createError(403);
+    throw createError(400);
   }
 
   next();

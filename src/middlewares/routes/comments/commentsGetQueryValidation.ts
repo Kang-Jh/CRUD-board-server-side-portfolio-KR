@@ -19,23 +19,23 @@ export const commentsGetValidationMiddleware = (
 
   // must have at least one query
   if (!(postId || commenterId || superCommentId || commentId)) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (commentId && !validator.isMongoId(commentId + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (postId && !validator.isMongoId(postId + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (superCommentId && !validator.isMongoId(superCommentId + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (commenterId && !validator.isMongoId(commenterId + '')) {
-    throw createError(403);
+    throw createError(400);
   }
 
   if (!cursor) {
