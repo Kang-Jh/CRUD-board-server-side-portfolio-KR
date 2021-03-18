@@ -118,6 +118,8 @@ function createBrowserRouter(mongoClient: MongoClient) {
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
         maxAge: ms('30d'),
+        sameSite: 'none',
+        secure: true,
       });
       res.json({ user });
     })

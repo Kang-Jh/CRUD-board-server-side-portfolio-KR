@@ -11,10 +11,9 @@ interface CsurfOptions {
 
 const csurfOptions: CsurfOptions = {
   cookie: {
-    // TODO if your server is running on HTTPS then you can enable secure options
     secure: true,
     httpOnly: true,
-    sameSite: 'lax',
+    sameSite: 'none',
     maxAge: ms('1h') / 1000,
   },
 };
