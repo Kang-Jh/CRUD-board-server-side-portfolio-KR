@@ -7,6 +7,6 @@ export interface User extends BaseData {
   oauthServer: string; // oauthServer is what provider users use to social log in
   email: string;
   username: string;
-  posts?: Partial<Post>[]; // posts are not stored in the document, posts are queried from Posts Collection
-  comments?: Partial<Comment>[]; // comments are not stored in the document, comments are queried from Comments Collection
+  posts?: (Required<Pick<Post, '_id'>> & Partial<Post>)[]; // posts are not stored in the document, posts are queried from Posts Collection
+  comments?: (Required<Pick<Comment, '_id'>> & Partial<Comment>)[]; // comments are not stored in the document, comments are queried from Comments Collection
 }
